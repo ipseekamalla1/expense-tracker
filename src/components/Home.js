@@ -5,13 +5,11 @@ import Navigation from './Navigation';
 import AddExpense from './AddExpense';
 import About from './About';
 import Contact from './Contact';
+import ImageGallery from './ImageGallery';
+import Footer from './Footer';
 
 function Home() {
-  const [expenses, setExpenses] = useState([
-    { id: 1, description: 'Groceries', amount: 150.00, category: 'food', date: '2024-03-15' },
-    { id: 2, description: 'Movie Tickets', amount: 45.00, category: 'entertainment', date: '2024-03-14' },
-    { id: 3, description: 'Gas', amount: 60.00, category: 'transport', date: '2024-03-13' },
-  ]);
+  const [expenses, setExpenses] = useState([]);
   const [title, setTitle] = useState("");
   const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("");
@@ -27,13 +25,22 @@ function Home() {
 
   const categories = ["Food", "Entertainment", "Transport", "Health", "Bills", "Shopping", "Other"];
 
+  // Load expenses from localStorage on component mount
   useEffect(() => {
-    const storedExpenses = JSON.parse(localStorage.getItem("expenses")) || [];
-    setExpenses(storedExpenses);
+    const savedExpenses = localStorage.getItem('expenses');
+    if (savedExpenses) {
+      setExpenses(JSON.parse(savedExpenses));
+    }
   }, []);
 
-  const saveToLocalStorage = (updatedExpenses) => {
-    localStorage.setItem("expenses", JSON.stringify(updatedExpenses));
+  // Save expenses to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem('expenses', JSON.stringify(expenses));
+  }, [expenses]);
+
+  const handleAddExpense = (newExpense) => {
+    const updatedExpenses = [...expenses, newExpense];
+    setExpenses(updatedExpenses);
   };
 
   const addExpense = (e) => {
@@ -48,19 +55,12 @@ function Home() {
 
     const updatedExpenses = [...expenses, newExpense];
     setExpenses(updatedExpenses);
-    saveToLocalStorage(updatedExpenses);
-
-    setTitle("");
-    setAmount("");
-    setCategory("");
-    setDate("");
   };
 
   const deleteExpense = (id) => {
     if (window.confirm("Are you sure you want to delete this expense?")) {
       const updatedExpenses = expenses.filter((expense) => expense.id !== id);
       setExpenses(updatedExpenses);
-      saveToLocalStorage(updatedExpenses);
     }
   };
 
@@ -82,7 +82,6 @@ function Home() {
         : expense
     );
     setExpenses(updatedExpenses);
-    saveToLocalStorage(updatedExpenses);
 
     setIsEditing(false);
     setEditingExpense(null);
@@ -145,10 +144,6 @@ function Home() {
       return 0;
     });
 
-  const handleAddExpense = (newExpense) => {
-    setExpenses(prevExpenses => [...prevExpenses, newExpense]);
-  };
-
   const handleEdit = (expense) => {
     setEditingExpense(expense);
     setShowModal(true);
@@ -179,7 +174,7 @@ function Home() {
               <p>Take control of your finances with our intuitive expense tracking solution</p>
             </div>
             <div className="hero-image">
-              <img src="/expense-tracker-hero.jpg" alt="Expense Tracker" />
+              <img src="/images/expense.jpg" alt="Expense Tracker" />
             </div>
           </div>
 
@@ -298,6 +293,12 @@ function Home() {
 
           {/* Contact Section */}
           <Contact />
+
+          {/* Image Gallery */}
+          <ImageGallery />
+
+          {/* Footer */}
+          <Footer />
 
           {/* Edit Modal */}
           {showModal && (

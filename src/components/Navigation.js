@@ -27,12 +27,7 @@ function Navigation() {
           </Link>
         </li>
         
-        <li>
-          <Link to="/settings" className="sidebar-link">
-            <FaCog className="nav-icon" />
-            Settings
-          </Link>
-        </li>
+      
         
       </ul>
     </nav>
