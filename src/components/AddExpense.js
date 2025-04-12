@@ -1,50 +1,103 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { FaPlus } from 'react-icons/fa';
 
-function AddExpense() {
-  const [title, setTitle] = useState("");
-  const [amount, setAmount] = useState("");
-  const [category, setCategory] = useState("");
+function AddExpense({ onAddExpense }) {
+  const [formData, setFormData] = useState({
+    description: '',
+    amount: '',
+    category: 'food',
+    date: new Date().toISOString().split('T')[0]
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Expense Added: ", { title, amount, category });
-    setTitle("");
-    setAmount("");
-    setCategory("");
+    if (!formData.description || !formData.amount) return;
+    
+    const newExpense = {
+      id: Date.now(),
+      ...formData,
+      amount: parseFloat(formData.amount)
+    };
+    
+    onAddExpense(newExpense);
+    setFormData({
+      description: '',
+      amount: '',
+      category: 'food',
+      date: new Date().toISOString().split('T')[0]
+    });
   };
 
   return (
     <div className="add-expense">
-      <h1>Add a New Expense</h1>
+      <h2>Add New Expense</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label>Title:</label>
+          <label>Description</label>
           <input
             type="text"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            name="description"
+            value={formData.description}
+            onChange={handleChange}
+            placeholder="Enter expense description"
             required
           />
         </div>
+        
         <div className="form-group">
-          <label>Amount:</label>
+          <label>Amount</label>
           <input
             type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
+            name="amount"
+            value={formData.amount}
+            onChange={handleChange}
+            placeholder="Enter amount"
+            min="0"
+            step="0.01"
             required
           />
         </div>
+        
         <div className="form-group">
-          <label>Category:</label>
+          <label>Category</label>
+          <select
+            name="category"
+            value={formData.category}
+            onChange={handleChange}
+            required
+          >
+            <option value="food">Food</option>
+            <option value="entertainment">Entertainment</option>
+            <option value="transport">Transport</option>
+            <option value="health">Health</option>
+            <option value="bills">Bills</option>
+            <option value="shopping">Shopping</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        
+        <div className="form-group">
+          <label>Date</label>
           <input
-            type="text"
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
+            type="date"
+            name="date"
+            value={formData.date}
+            onChange={handleChange}
             required
           />
         </div>
-        <button type="submit">Add Expense</button>
+        
+        <button type="submit" className="submit-btn">
+          <FaPlus /> Add Expense
+        </button>
       </form>
     </div>
   );
