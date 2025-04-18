@@ -20,15 +20,23 @@ function Navigation() {
       </div>
 
       <ul className="sidebar-nav">
+        <ul className="sidebar-nav">
         <li>
-          <Link to="/" className="sidebar-link active">
-            <FaHome className="nav-icon" />
-            Dashboard
+          <Link to="/" className="sidebar-link">
+            <span>Dashboard</span>
           </Link>
         </li>
-        
-      
-        
+        <li>
+          <Link to="/about" className="sidebar-link">
+            <span>About Us</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/contact" className="sidebar-link">
+            <span>Contact Us</span>
+          </Link>
+        </li>
+      </ul>
       </ul>
     </nav>
   );

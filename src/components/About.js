@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaUsers, FaChartPie, FaEnvelope } from 'react-icons/fa';
+import ImageGallery from './ImageGallery';
 
 function About() {
   return (
@@ -28,6 +29,7 @@ function About() {
           </div>
         </div>
       </div>
+      <ImageGallery />
     </div>
   );
 }

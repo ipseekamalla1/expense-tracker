@@ -656,45 +656,45 @@ button:focus:not(:active)::after {
 
 /* Hero Section */
 .hero-section {
-  display: flex;
-  align-items: center;
-  gap: 40px;
-  margin-bottom: 40px;
-  background: linear-gradient(135deg, var(--primary-color), #2980b9);
-  padding: 40px;
+  background-color: var(--light-color);
+  padding: 4rem 2rem;
+  margin-bottom: 2rem;
   border-radius: var(--border-radius);
-  color: white;
+  box-shadow: var(--box-shadow);
 }
 
 .hero-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+.hero-text {
   flex: 1;
+  text-align: left;
 }
 
-.hero-content h1 {
+.hero-text h1 {
   font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 20px;
-  line-height: 1.2;
-}
-
-.hero-content p {
-  font-size: 1.2rem;
-  opacity: 0.9;
-  margin-bottom: 30px;
+  color: var(--dark-color);
+  margin-bottom: 1rem;
 }
 
 .hero-image {
   flex: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-end;
 }
 
 .hero-image img {
   max-width: 100%;
   height: auto;
   border-radius: var(--border-radius);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--box-shadow);
+  max-height: 400px;
+  object-fit: cover;
 }
 
 /* About Section */
@@ -1325,4 +1325,82 @@ button:focus:not(:active)::after {
   .gallery-header h2 {
     font-size: 2rem;
   }
+}
+
+
+/* Modal styling */
+.edit-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  width: 400px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.update-btn,
+.cancel-btn {
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.update-btn {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #f44336;
+  color: white;
+}
+
+.update-btn:hover,
+.cancel-btn:hover {
+  opacity: 0.9;
 }

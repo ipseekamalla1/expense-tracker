@@ -38,6 +38,7 @@ function Footer() {
 
       <div className="footer-bottom">
         <p>&copy; {new Date().getFullYear()} Expense Tracker. All rights reserved.</p>
+        <p>Group Members: Ipseeka Malla, Summeet Yeadav | Student ID: 8959723</p>
       </div>
     </footer>
   );
