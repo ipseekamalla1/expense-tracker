@@ -1,34 +1,19 @@
 import React from 'react';
-import { FaHome, FaChartLine, FaUser, FaCog } from 'react-icons/fa';
 import '../styles/styles.css';
 
 function NewPage() {
   return (
-    <div className="app-container">
-      {/* Navbar */}
-      <nav className="navbar">
-        <div className="navbar-brand">
-          <h2>Expense Tracker</h2>
-        </div>
-        <div className="navbar-links">
-          <a href="#" className="nav-link active"><FaHome /> Home</a>
-          <a href="#" className="nav-link"><FaChartLine /> Dashboard</a>
-          <a href="#" className="nav-link"><FaUser /> Profile</a>
-          <a href="#" className="nav-link"><FaCog /> Settings</a>
-        </div>
-      </nav>
-
-      {/* Hero Section */}
-      <div className="hero-section">
-        <div className="hero-content">
-          <div className="hero-text">
-            <h1>Welcome to Expense Tracker</h1>
-            <p>Track your expenses, manage your budget, and achieve your financial goals with our intuitive platform.</p>
-            <button className="cta-button">Get Started</button>
-          </div>
-          <div className="hero-image">
-            <img src="/images/expense.jpg" alt="Expense Tracker" />
-          </div>
+    <div className="cover-page">
+      <div className="cover-content">
+        <h1 className="cover-title">Expense Tracker</h1>
+        <div className="student-details">
+          <p className="made-by">Made by:</p>
+          <p className="student-name">Ipseeka Malla</p>
+          <p className="student-id">Student ID: 8959723</p>
+          
+          <p className="student-name">Sumeet Yadav</p>
+          <p className="student-id">Student ID:8964479</p>
+          
         </div>
       </div>
     </div>

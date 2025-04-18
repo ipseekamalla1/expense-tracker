@@ -6,6 +6,7 @@ import './styles/styles.css';
 import Navigation from "./components/Navigation";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import NewPage from './components/NewPage';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/add-expense" element={<AddExpense />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/about" element={<About />} />
+            <Route path="/new-page" element={<NewPage />} />
           </Routes>
         </div>
       </div>
